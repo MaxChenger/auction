@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { ReactiveFormsModule,FormControl} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -13,6 +14,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule} from '@angular/router';
 import { ProductService } from './product.service';
+import { FilterPipe } from './filter.pipe';
 const routeConfig: Routes = [
   {path:'', component:HomeComponent},
   {path:'product/:productId', component:ProductDetailComponent}
@@ -28,11 +30,14 @@ const routeConfig: Routes = [
     ProductComponent,
     StarsComponent,
     ProductDetailComponent,
-    HomeComponent
+    HomeComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routeConfig)
+    RouterModule.forRoot(routeConfig),
+    ReactiveFormsModule,
+    FormControl
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

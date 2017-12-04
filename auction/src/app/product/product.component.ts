@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService,Product } from '../product.service';
+import {FormControl} from '@angular/forms';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -7,9 +8,20 @@ import { ProductService,Product } from '../product.service';
 })
 export class ProductComponent implements OnInit {
 
-	private products : Product[];
+	private products: Product[];
+
+  private keyword: string;
+
+  private titleFilter:FormControl = new FormControl();
+
   private imgUrl: 'http://placehold.it/320x150';
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) {
+    this.titleFilter.valueChanges
+        //.debounceTime(500)
+        .subscribe(
+          value => this.keyword = value
+        )
+  }
 
   ngOnInit() {
     this.products = this.productService.getProducts();
