@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { ReactiveFormsModule,FormControl} from '@angular/forms';
+import { ReactiveFormsModule,FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -37,9 +37,10 @@ const routeConfig: Routes = [
     BrowserModule,
     RouterModule.forRoot(routeConfig),
     ReactiveFormsModule,
-    FormControl
+    FormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+//http://idea.iteblog.com/key.php   webstorm破解码
