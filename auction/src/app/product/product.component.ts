@@ -25,6 +25,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.products = this.productService.getProducts();
+    //console.table(this.products);
   }
 
 }

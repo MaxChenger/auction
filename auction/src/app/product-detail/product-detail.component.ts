@@ -12,6 +12,9 @@ export class ProductDetailComponent implements OnInit {
   product: Product;
 
   comments: Comment[];
+  isCommentHidden:boolean = true;
+  newRating:number = 0;
+  newComment:string = "";
   constructor(private routeInfo: ActivatedRoute,private productService: ProductService) { }
 
   ngOnInit() {
@@ -19,5 +22,12 @@ export class ProductDetailComponent implements OnInit {
     this.product = this.productService.getProduct(productId);
     this.comments = this.productService.getCommentForProductId(productId);
   }
+  addComment(){
+    let comment = new Comment(0,this.product.id,new Date().toISOString(),"someone",this.newRating,this.newComment);
+    this.comments.unshift(comment);
 
+    this.newComment = null;
+    this.newRating = 0;
+    this.isCommentHidden = true;
+  }
 }
