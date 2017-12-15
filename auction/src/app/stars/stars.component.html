@@ -1,5 +1,5 @@
 <!-- class.glyphicon-star-empty 为angular的样式绑定，根据star的true 或者false来决定是否让星星变为空心，当star为true时，则表示把glyphicon-star-empty这个类添加到span的类名中，同时星星显示为空心 -->
 <p>
 	<span *ngFor="let star of stars;let i=index;" class="glyphicon glyphicon-star" [class.glyphicon-star-empty]="star" (click)="clickStar(i)"></span>
-	<span>{{rating}}星</span>
+	<span>{{rating | number:'1.0-2'}}星</span>
 </p>
